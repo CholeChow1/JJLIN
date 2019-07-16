@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="gbk"/>
+	<meta charset="utf-8"/>
 	<title></title>
 	<style>
 		li{
@@ -18,7 +18,7 @@
 	</style>
 	<script src="jquery-1-7-2.js"></script>
 	<script>
-		//ÒôÀÖ×ÊÔ´
+		//éŸ³ä¹èµ„æº
 		var myMusics = new Array(
 			{src:"../Taylor Swift - 22 [mqms2].mp3",title:"22"},
 			{src:"../Taylor Swift - All Too Well [mqms2].mp3",title:"All Too Well"},
@@ -58,11 +58,11 @@
 			{src:"../Taylor Swift - You Belong With Me [mqms2].mp3",title:"You Belong With Me"}
 			
 		);	
-		//Êı×éÏÂ±ê
+		//æ•°ç»„ä¸‹æ ‡
 		var index = -1;	
-		//²¥·Å×´Ì¬ µ¥ÇúÑ­»·£º0 ÁĞ±íÑ­»·£º1 Ëæ»ú²¥·Å£º2
+		//æ’­æ”¾çŠ¶æ€ å•æ›²å¾ªç¯ï¼š0 åˆ—è¡¨å¾ªç¯ï¼š1 éšæœºæ’­æ”¾ï¼š2
 		var playState = 1;
-		//´´½¨ÒôÀÖÁĞ±í
+		//åˆ›å»ºéŸ³ä¹åˆ—è¡¨
 		function createBox(){
 			var html="";
 			for(var i=0;i<myMusics.length;i++){
@@ -70,41 +70,41 @@
 			}
 			return html
 		}
-		//Ò³Ãæ¼ÓÔØ		
+		//é¡µé¢åŠ è½½		
 		$(document).ready(function(){
 			$("#"+"box").append(createBox());
 			playMusic(1);
 			
-			//°´Å¥"ÏÂÒ»Ê×"µ¥»÷ÊÂ¼ş
+			//æŒ‰é’®"ä¸‹ä¸€é¦–"å•å‡»äº‹ä»¶
 			$("#nextMusic").click(function(){
 				playMusic(1,1);
 			});
-			//°´Å¥"ÉÏÒ»Ê×"µ¥»÷ÊÂ¼ş
+			//æŒ‰é’®"ä¸Šä¸€é¦–"å•å‡»äº‹ä»¶
 			$("#lastMusic").click(function(){
 				playMusic(2);
 			});
-			////°´Å¥"²¥·Å/ÔİÍ£"µ¥»÷ÊÂ¼ş
+			////æŒ‰é’®"æ’­æ”¾/æš‚åœ"å•å‡»äº‹ä»¶
 			$("#playMusic").click(function(){
-				if($(this).val()=="²¥·Å"){
-					$(this).val("ÔİÍ£");
+				if($(this).val()=="æ’­æ”¾"){
+					$(this).val("æš‚åœ");
 					document.getElementById("media").play();
-				}else if($(this).val()=="ÔİÍ£"){
-					$(this).val("²¥·Å");
+				}else if($(this).val()=="æš‚åœ"){
+					$(this).val("æ’­æ”¾");
 					document.getElementById("media").pause();
 				}
 			});
 			
-			//¿ì½ø
+			//å¿«è¿›
 			$("#fast").click(function(){
 				var media = document.getElementById("media");
 				media.currentTime+=5;
 			});
-			//¿ìÍË
+			//å¿«é€€
 			$("#rewind").click(function(){
 				var media = document.getElementById("media");
 				media.currentTime-=5;
 			});
-			//²¥·Å×´Ì¬
+			//æ’­æ”¾çŠ¶æ€
 			$("#playState").change(function(){
 				playState = $(this).val();				
 			});
@@ -121,20 +121,20 @@
 			
 		});
 		
-		//µã»÷Ãû×Ö²¥·ÅÒôÀÖ
+		//ç‚¹å‡»åå­—æ’­æ”¾éŸ³ä¹
 		function clickName(i){
 			index=i;
 			playMusic(0);
 		}
 	
-		//ÒôÀÖ²¥·Å
+		//éŸ³ä¹æ’­æ”¾
 		function playMusic(s,n){
-			$("#playMusic").val("ÔİÍ£");
-			if(s==0){//µã»÷Ãû×Ö²¥·ÅÒôÀÖ
+			$("#playMusic").val("æš‚åœ");
+			if(s==0){//ç‚¹å‡»åå­—æ’­æ”¾éŸ³ä¹
 			
-			}else if(s==1){//ÏÂÒ»Ê×
-				$("#playMusic").val("ÔİÍ£");
-				if(playState==0){//µ¥ÇúÑ­»·
+			}else if(s==1){//ä¸‹ä¸€é¦–
+				$("#playMusic").val("æš‚åœ");
+				if(playState==0){//å•æ›²å¾ªç¯
 					if(n==0){
 					
 					}else if(n==1){
@@ -143,15 +143,15 @@
 							index=0;
 						}
 					}
-				}else if(playState==1){//ÁĞ±íÑ­»·
+				}else if(playState==1){//åˆ—è¡¨å¾ªç¯
 					index++;
 					if(index>=myMusics.length){
 						index=0;
 					}
-				}else if(playState==2){//Ëæ»ú²¥·Å
+				}else if(playState==2){//éšæœºæ’­æ”¾
 					index = Math.floor(Math.random()*myMusics.length);
 				}
-			}else if(s==2){//ÉÏÒ»Ê×
+			}else if(s==2){//ä¸Šä¸€é¦–
 				index--;
 				if(index<0){
 					index=myMusics.length-1;
@@ -159,35 +159,35 @@
 			}
 			
 			
-			//ĞŞ¸Äaudio×ÊÔ´Â·¾¶
+			//ä¿®æ”¹audioèµ„æºè·¯å¾„
 			$("#media").attr("src",myMusics[index].src);
-			//ÒôÀÖ²¥·Å
+			//éŸ³ä¹æ’­æ”¾
 			$("#media").play;
-			//ÏÔÊ¾ÒôÀÖÃû³Æ
+			//æ˜¾ç¤ºéŸ³ä¹åç§°
 			$("#musicTitle").text(myMusics[index].title);
 			$("title").text(myMusics[index].title);
-			//ÖØÖÃliÁĞ±í±³¾°É«
+			//é‡ç½®liåˆ—è¡¨èƒŒæ™¯è‰²
 			$("#box").children("li").css("background-color","#FFFFFF");
 			$("#box").children("li").css("font-weight","normal");
 			
-			//ĞŞ¸Ä²¥·ÅÒôÀÖ±³¾°É«
+			//ä¿®æ”¹æ’­æ”¾éŸ³ä¹èƒŒæ™¯è‰²
 			$($("#box").children("li")[index]).css("background-color","#F0F0F0");
 			$($("#box").children("li")[index]).css("font-weight","bold");
 			
 			$("#sliding").offset({left:60});
 		}
-		//Ê±¼ä»ñÈ¡
+		//æ—¶é—´è·å–
 		function timeupdate(){
-			//»ñÈ¡audioÔªËØ
+			//è·å–audioå…ƒç´ 
 			var media = document.getElementById("media");
-			//ÒôÀÖµ±Ç°Î»ÖÃ
+			//éŸ³ä¹å½“å‰ä½ç½®
 			var curr = Math.floor(media.currentTime);
-			//ÒôÀÖ³¤¶È
+			//éŸ³ä¹é•¿åº¦
 			var dur = Math.floor(media.duration);
-			$("#totalTime").text("Ê±³¤£º"+formatTime(dur));
-			$("#currTime").text("µ±Ç°£º"+formatTime(curr));
+			$("#totalTime").text("æ—¶é•¿ï¼š"+formatTime(dur));
+			$("#currTime").text("å½“å‰ï¼š"+formatTime(curr));
 		}
-		//ÒôÀÖ¼ÆÊ±¸ñÊ½
+		//éŸ³ä¹è®¡æ—¶æ ¼å¼
 		function formatTime(time){
 			
 			var h=0,i=0,s=parseInt(time);
@@ -207,8 +207,8 @@
 	</script>
 	</head>
 	
-	<body background="../Ã¹Ã¹bg.jpg">
-		<h1 align="center"><font color=#F09512>Ã¹Ã¹¸èÇú</font></h1>
+	<body background="../éœ‰éœ‰bg.jpg">
+		<h1 align="center"><font color=#F09512>éœ‰éœ‰æ­Œæ›²</font></h1>
 		<style>
 			body{
 				background-size: cover;
@@ -219,18 +219,18 @@
 		
 		<div style="float:left;margin-left:550px;width:450px;height:200px;">
 				<p id="musicTitle"></p>
-				<p id="currTime" >µ±Ç°£º00:00:00</p>
-				<p id="totalTime" >Ê±³¤£º00:00:00</p>
+				<p id="currTime" >å½“å‰ï¼š00:00:00</p>
+				<p id="totalTime" >æ—¶é•¿ï¼š00:00:00</p>
 				
-				<input id="lastMusic" type="button" value="ÉÏÒ»Ê×" />
+				<input id="lastMusic" type="button" value="ä¸Šä¸€é¦–" />
 				<input id="rewind" type="button" value="<<" />
-				<input id="playMusic" type="button" value="ÔİÍ£" />
+				<input id="playMusic" type="button" value="æš‚åœ" />
 				<input id="fast" type="button" value=">>" />
-				<input id="nextMusic" type="button" value="ÏÂÒ»Ê×" />
+				<input id="nextMusic" type="button" value="ä¸‹ä¸€é¦–" />
 				<select id="playState">
-					<option value="0">µ¥ÇúÑ­»·</option>
-					<option value="1" selected>ÁĞ±íÑ­»·</option>
-					<option value="2">Ëæ»ú²¥·Å</option>
+					<option value="0">å•æ›²å¾ªç¯</option>
+					<option value="1" selected>åˆ—è¡¨å¾ªç¯</option>
+					<option value="2">éšæœºæ’­æ”¾</option>
 				</select>
 				<ul id="box" style="border:1px solid black;padding:0px;height:300px;width:300px;overflow-y:auto;"></ul>
 		</div>
